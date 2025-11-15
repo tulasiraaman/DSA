@@ -1,0 +1,29 @@
+class Solution {
+    ArrayList<String> extractIntegerWords(String s) {
+        // code here
+        ArrayList<String> result = new ArrayList<String>();
+        StringBuilder num = new StringBuilder();
+        
+        for(char ch: s.toCharArray()){
+            if(Character.isDigit(ch)){
+                num.append(ch);
+            }else{
+                if(num.length() > 0){
+                    result.add(num.toString());
+                    num.setLength(0);
+                }
+            }
+        }
+        
+        if(num.length() > 0){
+            result.add(num.toString());
+            num.setLength(0);
+        }
+        
+        if(result.isEmpty()){
+            result.add("No Integers");
+        }
+      
+        return result;
+    }
+}
