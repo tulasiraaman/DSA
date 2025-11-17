@@ -1,0 +1,11 @@
+class Solution {
+    int maxSubarraySum(int[] arr) {
+        // Code here
+        int maxValue = arr[0], sum = arr[0];
+        for(int i = 1;i < arr.length;i++){
+            sum = Math.max(arr[i], sum+arr[i]);
+            maxValue = Math.max(sum, maxValue);
+        }
+        return maxValue;
+    }
+}
