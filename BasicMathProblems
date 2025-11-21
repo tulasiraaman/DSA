@@ -1,0 +1,80 @@
+class Solution {
+    static int evenlyDivides(int n) {
+        // code here
+        int count = 0;
+        int temp = n;
+        
+        while(temp > 0){
+            int lastDigit = temp % 10;
+            temp = temp / 10;
+            
+            if(lastDigit != 0 && n % lastDigit == 0){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int reverseDigits(int n) {
+        // Code here
+        int reverse = 0;
+        while(n > 0){
+            int temp = n % 10;
+            n /= 10;
+            reverse = reverse * 10 + temp;
+        }
+        return reverse;
+    }
+
+  // public static int gcd(int a, int b) {
+    //     // code here
+    //     int min = (a < b) ? a : b;
+        
+    //     for(int i = min;i >= 1;i--){
+    //         if(a % i == 0 && b % i == 0){
+    //             return i;
+    //         }
+    //     }
+    //     return 1;
+    // }
+        public static int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+  static boolean armstrongNumber(int n) {
+        // code here
+        int digit = n, square = 0;
+        
+        while(n > 0){
+            int lastDigit = n % 10;
+            n /= 10;
+            square = square + lastDigit * lastDigit * lastDigit; 
+        }
+        
+        return (digit == square);
+    }
+
+  public boolean isPalindrome(int n) {
+        // code here
+        int num = n, reverse = 0;
+        while(n > 0){
+            reverse = reverse * 10 + n % 10;
+            n /= 10;
+        }
+        return (num == reverse);
+    }
+
+  int floorSqrt(int n) {
+        // code here
+        int i = 1;
+        while (i * i <= n) {
+            i++;
+        }
+        return i - 1;
+    }
+}
