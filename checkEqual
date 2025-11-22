@@ -1,0 +1,19 @@
+class Solution {
+    public static boolean checkEqual(int[] a, int[] b) {
+        // code here
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        for(int num : a){
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        for(int num : b){
+            if (!map.containsKey(num)) return false;
+            map.put(num, map.get(num) - 1);
+        }
+        for(int count : map.values()){
+            if(count != 0) return false;
+        }
+        
+        return true;
+    }
+}
