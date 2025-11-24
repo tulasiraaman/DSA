@@ -1,0 +1,26 @@
+class Solution {
+    public void sort012(int[] arr) {
+        // code here
+        int n = arr.length;
+        int left = 0, mid = 0, right = n-1;
+        
+        while(mid <= right){
+            if(arr[mid] == 0){
+                swapValues(arr, left, mid);
+                left++;
+                mid++;
+            }else if(arr[mid] == 1){
+                mid++;
+            }else{
+                swapValues(arr, right, mid);
+                right--;
+            }
+        }
+    }
+    
+    private void swapValues(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
