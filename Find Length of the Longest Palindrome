@@ -1,0 +1,22 @@
+class Solution {
+    public int longestPalindrome(String s) {
+        int[] hashArray = new int[128];
+
+        for(char i: s.toCharArray()){
+            hashArray[i - '0']++;
+        }
+
+        int len = 0;
+        boolean hasOdd = false;
+
+        for(int i : hashArray){
+            if(i % 2 == 0){
+                len += (i / 2);
+            }else{
+                hasOdd = true;
+                len += (i - 1)/ 2;
+            }
+        }
+        return hasOdd ? (len * 2) + 1: len * 2;
+    }
+}
