@@ -1,0 +1,25 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+        if (strs == null || strs.length == 0) return new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+
+        for(String str : strs){
+
+            int[] hash = new int[26];
+            for(char ch : str.toCharArray()){
+                hash[ch - 'a']++;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for(int n : hash){
+                sb.append(n).append('_'); //adding character because if the letter more than 9 it will not give perfect result
+            }
+            String key = sb.toString();
+
+            if(!map.containsKey(key)) map.put(key, new ArrayList<>()); //10001....1., []
+            map.get(key).add(str); //10001....1., [eat]
+        }
+        return new ArrayList<>(map.values());
+    }
+}
